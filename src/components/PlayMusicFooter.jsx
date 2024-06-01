@@ -18,26 +18,22 @@ function PlayMusicFooter() {
     const params = useParams();
     const token = useSelector((state) => state.auth.token);
 
-
     const savePlaylistToLocalStorage = (playlist) => {
         const savedPlaylists = JSON.parse(localStorage.getItem('playlists')) || [];
         savedPlaylists.push(playlist);
         localStorage.setItem('playlists', JSON.stringify(savedPlaylists));
     };
-    
+
     const removePlaylistFromLocalStorage = (playlistId) => {
         let savedPlaylists = JSON.parse(localStorage.getItem('playlists')) || [];
         savedPlaylists = savedPlaylists.filter(playlist => playlist.id !== playlistId);
         localStorage.setItem('playlists', JSON.stringify(savedPlaylists));
     };
-    
+
     const isPlaylistInLocalStorage = (playlistId) => {
         const savedPlaylists = JSON.parse(localStorage.getItem('playlists')) || [];
         return savedPlaylists.some(playlist => playlist.id === playlistId);
     };
-  
-
-
 
     useEffect(() => {
         if (params.id) {
@@ -65,17 +61,18 @@ function PlayMusicFooter() {
         const minutes = Math.floor(duration_ms / 60000);
         const seconds = Math.floor((duration_ms % 60000) / 1000);
         const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-        console.log(formattedSeconds);
         return `${minutes}:${formattedSeconds}`;
     }
 
     function handlePlayMusic() {
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
+        if (audioRef.current.src) {
+            if (isPlaying) {
+                audioRef.current.pause();
+            } else {
+                audioRef.current.play();
+            }
+            setIsPlaying(!isPlaying);
         }
-        setIsPlaying(!isPlaying);
     }
 
     function handleTimeUpdate() {
