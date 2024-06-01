@@ -41,8 +41,8 @@ function MadeForYou() {
     handleFetch();
   }, [token]);
 
-  function handleRedirect() {
-    navigate(`playlist/${data?.id}`)
+  function handleRedirect(id) {
+    navigate(`playlist/${id}`)
   }
 
   return (
@@ -56,8 +56,8 @@ function MadeForYou() {
           {madeForYou?.length > 0 &&
             madeForYou?.map((el, index) => {
               return (
-                <div key={index} onClick={handleRedirect}>
-                  <div className="w-[192px] h-[300px] overflow-clip bg-[#1B1B1B] p-4 rounded-xl">
+                <div key={index} onClick={() => handleRedirect(el?.id)}>
+                  <div className="w-[192px] h-[300px] overflow-clip bg-[#1B1B1B] p-4 rounded-xl cursor-pointer">
                     <img src={el?.images[0]?.url} alt="" width={162} height={162} className='rounded-md' />
                     <h4 className='pt-5 pb-2 font-semibold'>{el?.name}</h4>
                     <p className='text-[#b3b3b3] text-sm'>{el?.description}</p>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken } from './utils';
+import { useNavigate } from 'react-router-dom';
 
 function RecentlyPlayed() {
   const [recentlyPlayed, setRecentlyPlayed] = useState([])
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const handleFetch = (limit = 4) => {
     if (token) {
@@ -19,7 +21,6 @@ function RecentlyPlayed() {
         .then((res) => res.json())
         .then((data) => {
           setRecentlyPlayed(data.playlists.items);
-          console.log(data)
         })
         .catch((err) => {
           console.log(err);
@@ -27,7 +28,6 @@ function RecentlyPlayed() {
     } else {
       getToken()
         .then((res) => {
-          console.log(res)
           dispatch(create(res));
         })
         .catch((err) => {
@@ -41,6 +41,10 @@ function RecentlyPlayed() {
     handleFetch();
   }, [token]);
 
+  function handleRedirect(id) {
+    navigate(`playlist/${id}`)
+  }
+
   return (
     <>
       <div className='flex flex-col gap-6 mt-8'>
@@ -52,8 +56,8 @@ function RecentlyPlayed() {
           {recentlyPlayed?.length > 0 &&
             recentlyPlayed?.map((el, index) => {
               return (
-                <div key={index}>
-                  <div className="w-[192px] h-[300px] overflow-clip bg-[#1B1B1B] p-4 rounded-xl">
+                <div key={index} onClick={() => handleRedirect(el?.id)}>
+                  <div className="w-[192px] h-[300px] overflow-clip bg-[#1B1B1B] p-4 rounded-xl cursor-pointer">
                     <img src={el?.images[0]?.url} alt="" width={162} height={162} className='rounded-md' />
                     <h4 className='pt-5 pb-2 font-semibold'>{el?.name}</h4>
                     <p className='text-[#b3b3b3] text-sm'>{el?.description}</p>

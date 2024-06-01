@@ -12,9 +12,13 @@ const authSlice = createSlice({
         create: (state, action) => {
             state.token = action.payload.token;
             state.date = action.payload.date;
-        }
+        },
+        // save: (state, action) => {
+        //     state.name = action.name;
+        //     state.des
+        // }
     }
 })
 
-export const {create} = authSlice.actions;
+export const {create, save} = authSlice.actions;
 export default authSlice.reducer;

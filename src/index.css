@@ -6,3 +6,8 @@
 .gradient {
     background: linear-gradient(180deg, #3333A3 5.09%, #121212 33.4%);
 }
+
+.background {
+    min-height: 115vh;
+    background: linear-gradient(180deg, #DEF628 5.09%, #121212 43.28%);
+}
