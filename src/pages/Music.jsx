@@ -142,7 +142,7 @@ function Music() {
                       <p>Play It Safe</p>
                     </div>
                     <div className='flex gap-10 items-center'>
-                      <span onClick={handleChangeIcon}><img src={freeHeart} alt="" /></span>
+                      <span><img src={freeHeart} alt="" /></span>
                       <span className='text-lg font-semibold'>{el?.track?.duration_ms && new Date(el.track.duration_ms).toISOString().substring(14, 19)}</span>
                     </div>
                   </div>
