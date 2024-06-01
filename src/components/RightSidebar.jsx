@@ -6,7 +6,7 @@ function RightSidebar() {
   return (
     <>
         <div className="w-[400px] bg-black min-h-[100vh] text-white">
-            <div className="pr-6 pl-6 pt-7">
+            <div className="pr-6 pl-6 pt-4 fixed">
                 <div className='flex justify-between items-center'>
                     <h4 className='text-md'>Friend Activity</h4>
                     <div className='flex items-center gap-2'>
