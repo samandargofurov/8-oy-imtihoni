@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getToken } from './utils';
-import { UNSAFE_NavigationContext, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function UniquelyYours() {
   const [uniquelyYours, setUniquelyYours] = useState([])

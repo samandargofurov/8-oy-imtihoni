@@ -3,9 +3,7 @@ import { useSelector } from 'react-redux';
 import back from '../assets/Back.svg';
 import forward from '../assets/Forward.svg';
 import bigGreenPlay from '../assets/Play_GreemHover.svg';
-import bigGreenPause from '../assets/Pause_GreemHover.svg';
 import freeHeart from '../assets/freeHeart.svg';
-import heart from '../assets/heart.svg';
 import search_S from '../assets/Search_S.svg';
 import clock from '../assets/clock.svg';
 import download from '../assets/Download_XS.svg';
@@ -58,10 +56,6 @@ function Music() {
     }
   };
 
-
-  function handleChangeIcon() {
-    
-  }
 
   return (
     <div className='background w-full'>

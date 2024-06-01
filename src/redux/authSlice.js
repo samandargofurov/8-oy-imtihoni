@@ -13,10 +13,6 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             state.date = action.payload.date;
         },
-        // save: (state, action) => {
-        //     state.name = action.name;
-        //     state.des
-        // }
     }
 })
 
